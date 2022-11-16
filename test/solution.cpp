@@ -122,3 +122,48 @@ TEST_CASE("Validate isBST") {
 
     clean(test);
 }
+
+//My Tests
+
+TEST_CASE("Inorder vector") {
+
+    Node* test = new Node(5);
+    test->left = new Node(7);
+    test->right = new Node(7);
+    test->left->left = new Node(14);
+    test->left->left->right = new Node(18);
+    std::vector<int> toTest;
+    inorderInVec(test, &toTest);
+    std::vector<int> toCompare = { 14, 18, 7, 5, 7 };
+
+    REQUIRE(toCompare == toTest);
+}
+
+
+TEST_CASE("Preoder vector") {
+
+    Node* test = new Node(5);
+    test->left = new Node(7);
+    test->right = new Node(7);
+    test->left->left = new Node(14);
+    test->left->left->right = new Node(18);
+    std::vector<int> toTest;
+    preorderInVec(test, &toTest);
+    std::vector<int> toCompare = { 5, 7, 14, 18, 7};
+
+    REQUIRE(toCompare == toTest);
+}
+
+TEST_CASE("Postorder vector") {
+
+    Node* test = new Node(5);
+    test->left = new Node(7);
+    test->right = new Node(7);
+    test->left->left = new Node(14);
+    test->left->left->right = new Node(18);
+    std::vector<int> toTest;
+    postorderInVec(test, &toTest);
+    std::vector<int> toCompare = { 7, 14, 18, 7, 5 };
+
+    REQUIRE(toCompare == toTest);
+}
